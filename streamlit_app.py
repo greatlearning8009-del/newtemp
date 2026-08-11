@@ -24,7 +24,7 @@ import streamlit as st
 
 
 # Load the JSON file and extract values
-file_name = 'src/config.json'
+file_name = 'config.json'
 with open(file_name, 'r') as file:
     config = json.load(file)
     os.environ['OPENAI_API_KEY'] = config.get("API_KEY") # Loading the API Key
@@ -59,7 +59,7 @@ class ChatBotState(TypedDict):
 class SQLOrderService:
     """Service for querying orders from SQLite database"""
 
-    def __init__(self, db_path='src/orders.db'):
+    def __init__(self, db_path='orders.db'):
         self.db_path = db_path
         self.db = SQLDatabase.from_uri(f"sqlite:///{db_path}")
         self.llm = ChatOpenAI(model="gpt-4o", temperature=0)
